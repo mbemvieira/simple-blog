@@ -1,18 +1,28 @@
 <script setup>
+import { ref } from "vue";
+
+const name = ref();
+const content = ref();
+const emit = defineEmits(['submit']);
 
 function onSubmit() {
-    alert('create comment');
+    const data = {
+        user_name: name.value,
+        content: content.value,
+    }
+
+    emit('submit', data);
 }
 </script>
 
 <template>
     <form>
         Name
-        <input type="text" name="" id="" />
+        <input type="text" v-model="name" />
 
         Comment
-        <textarea name="" id="" cols="30" rows="10"></textarea>
+        <input type="text" v-model="content" />
 
-        <button type="submit" @click.prevent="onSubmit">Comment</button>
+        <button type="submit" @click.prevent="onSubmit">Publish</button>
     </form>
 </template>

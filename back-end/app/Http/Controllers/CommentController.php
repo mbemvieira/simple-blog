@@ -43,7 +43,7 @@ class CommentController extends Controller
         $attributes['post_id'] = 1;
         $attributes['layer'] = 0;
 
-        if ($attributes['parent_id'] !== null) {
+        if (isset($attributes['parent_id'])) {
             $parentComment = Comment::find($attributes['parent_id']);
 
             if ($parentComment === null) {
